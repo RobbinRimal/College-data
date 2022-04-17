@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Details</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Form</h1>
+<form action="#" th:action="@{/professor/form}" th:object="${Professor}" method="get">
+
+   <div>
+       <p>First Name: <input type="text" th:field="*{name}" /></p>
+   </div>
+
+    <div>
+        <p>Last Name: <input type="text" th:field="*{lastName}" /></p>
+    </div>
+
+    <div>
+        <p>Father's Name: <input type="text" th:field="*{fatherName}" /></p>
+    </div>
+
+    <div>
+        <p>E-mail: <input type="email" th:field="*{email}" /></p>
+    </div>
+
+    <div>
+        <p>Date Of Birth: <input type="datetime-local" th:field="*{dob}" /></p>
+    </div>
+
+    <div>
+        <p>Faculty: <input type="text" th:field="*{Faculty}" /></p>
+    </div>
+
+    <div>
+        <p>University: <input type="text" th:field="*{university}" /></p>
+    </div>
+
+    <div>
+        <p>experience: <input type="text" th:field="*{experience}" /></p>
+    </div>
+
+    <div>
+        <p>
+            <input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+        </p>
+   </div>
+
+
+</form>
+</body>
+</html>
