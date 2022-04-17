@@ -11,7 +11,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-public class CourseCommand {
+public class CourseCommand extends BaseEntityCommand{
     private String course;
     private Set<Subject> subjectSet=new HashSet<>();
 

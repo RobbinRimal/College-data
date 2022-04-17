@@ -19,6 +19,8 @@ public class CourseCommandToCourse implements Converter<CourseCommand, Course>{
 
         }
        final Course course= new Course();
+
+
         course.setCourse(source.getCourse());
         course.setSubjectSet(source.getSubjectSet());
         return course;

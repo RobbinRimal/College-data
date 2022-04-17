@@ -10,7 +10,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-public class StudentCommand {
+public class StudentCommand  extends Personcommand{
     private Set<Course> courseSet=new HashSet<>();
     private int year;
     private  int courseLength;

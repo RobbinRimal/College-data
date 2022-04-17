@@ -10,7 +10,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ProfessorCommand {
+public class ProfessorCommand extends Personcommand {
     private String university;
     private String Faculty;
     private  Integer experience;

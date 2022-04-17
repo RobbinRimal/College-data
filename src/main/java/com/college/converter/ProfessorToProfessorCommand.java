@@ -13,10 +13,14 @@ public class ProfessorToProfessorCommand implements Converter<Professor, Profess
     public ProfessorCommand convert(Professor source) {
         if (source==null){return null;}
         final  ProfessorCommand professorCommand= new ProfessorCommand();
+
+
         professorCommand.setUniversity(source.getUniversity());
         professorCommand.setFaculty(source.getFaculty());
         professorCommand.setExperience(source.getExperience());
         professorCommand.setSubjects(source.getSubjects());
+
         return professorCommand;
     }
+
 }

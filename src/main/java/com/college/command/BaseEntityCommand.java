@@ -7,6 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class SubjectCommand extends BaseEntityCommand {
-    private String SubjectName;
+public class BaseEntityCommand {
+    private   Long ID;
+
 }
