@@ -7,6 +7,7 @@ import com.college.model.Professor;
 import com.college.repository.ProfessorRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -34,6 +35,7 @@ public class ProfessorServiceImpl implements ProfessorService{
     }
 
     @Override
+    @Transactional
     public ProfessorCommand findCommandById(Long L) {
 
 
@@ -48,7 +50,6 @@ public class ProfessorServiceImpl implements ProfessorService{
        if (!professorOptional.isPresent()){
            throw new RuntimeException("Professor not found");
        }
-
-        return professorOptional.get();
+       return professorOptional.get();
     }
 }

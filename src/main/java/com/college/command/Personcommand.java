@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Lob;
+import java.sql.Date;
 import java.time.LocalDate;
 
 @Getter
@@ -15,7 +16,7 @@ public class Personcommand extends BaseEntityCommand{
     private String lastName;
     private String fatherName;
     private String email;
-    private LocalDate dob;
+    private Date dob;
     private String address;
     @Lob
     private Byte[] image;

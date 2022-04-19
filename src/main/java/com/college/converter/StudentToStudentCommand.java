@@ -15,6 +15,14 @@ public class StudentToStudentCommand implements Converter<Student, StudentComman
     public StudentCommand convert(Student source) {
         if (source==null){return null;}
         final   StudentCommand studentCommand=new StudentCommand();
+        studentCommand.setID(source.getID());
+        studentCommand.setName(source.getName());
+        studentCommand.setLastName(source.getLastName());
+        studentCommand.setFatherName(source.getFatherName());
+        studentCommand.setEmail(source.getEmail());
+        studentCommand.setDob(source.getDob());
+        studentCommand.setAddress(source.getAddress());
+        studentCommand.setImage(source.getImage());
         studentCommand.setCourseSet(source.getCourseSet());
         studentCommand.setYear(source.getYear());
         studentCommand.setCourseLength(source.getCourseLength());

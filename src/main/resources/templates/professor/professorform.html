@@ -8,7 +8,7 @@
 <h1>Form</h1>
 <form action="#" th:action="@{/professor/}" th:object="${professor}" method="post">
 
-<!--   <div>
+
        <p>First Name: <input type="text" th:field="*{name}" /></p>
    </div>
 
@@ -20,16 +20,16 @@
         <p>Father's Name: <input type="text" th:field="*{fatherName}" /></p>
     </div>
 
-    <div>
-        <p>E-mail: <input type="email" th:field="*{email}" /></p>
-    </div>
+        <div>
+            <p>E-mail: <input type="email" th:field="*{email}" /></p>
+        </div>
+
+        <div>
+            <p>Date Of Birth: <input type="date" th:field="*{dob}" /></p>
+        </div>
 
     <div>
-        <p>Date Of Birth: <input type="datetime-local" th:field="*{dob}" /></p>
-    </div>
--->
-    <div>
-        <p>Faculty: <input type="text" th:field="*{Faculty}" /></p>
+        <p>Faculty: <input type="text" th:field="*{faculty}" /></p>
     </div>
 
     <div>

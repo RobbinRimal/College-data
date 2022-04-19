@@ -2,14 +2,14 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Show professor data</title>
+    <title>Show Student Data</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 <div>
     <ul>Name:
         <li>
-            <p th:text="${professor.name+' '+professor.lastName }"> </p>
+            <p th:text="${student.name+' '+student.lastName }">Shiva Sarma </p>
         </li>
     </ul>
 </div>
@@ -17,41 +17,41 @@
 
     <ul>Father Name:
         <li>
-            <p th:text=${professor.fatherName}>B </p>
+            <p th:text=${student.fatherName}>Bikash Bhadur Nepal </p>
         </li>
     </ul>
 </div>
 
 <ul>E-mail:
     <li>
-        <p th:text=${professor.email}>B </p>
+        <p th:text=${student.email}>hello@gmail.com </p>
     </li>
 </ul>
 </div>
 <ul>Date Of Birth:
     <li>
-        <p th:text=${professor.dob}>B </p>
+        <p th:text=${student.dob}>12-11-1919 </p>
     </li>
 </ul>
 </div>
 
-    <ul>Faculty:
-            <li>
-                <p th:text=${professor.faculty}>B </p>
-            </li>
-    </ul>
+<ul>Address:
+    <li>
+        <p th:text=${student.address}>Birtamode </p>
+    </li>
+</ul>
 </div>
 <div>
-    <ul>University:
+    <ul>Course Length:
         <li>
-            <p th:text=${professor.university}> </p>
+            <p th:text=${student.courseLength}> </p>
         </li>
     </ul>
 </div>
 <div>
-    <ul>Experience:
+    <ul>Year:
         <li>
-            <p th:text=${professor.experience}> </p>
+            <p th:text=${student.year}> </p>
         </li>
     </ul>
 </div>

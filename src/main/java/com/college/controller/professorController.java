@@ -9,7 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-
+//todo it's working dont mesh it
 
 @Controller
 @Slf4j
@@ -29,27 +29,32 @@ public class professorController {
             }
 
             @PostMapping("professor")
-        public String Save(@Valid @ModelAttribute("professor") ProfessorCommand command, BindingResult bindingResult){
+        public String Save(@Valid @ModelAttribute("professor") ProfessorCommand command,
+                           BindingResult bindingResult){
         if (bindingResult
                 .hasErrors()){
                     bindingResult
                     .getAllErrors()
                     .forEach(objectError -> {
                         log.debug(objectError.toString());
-
-            });
+                                                             });
+            System.out.println("oops it has some error on  data");
             return "professor/professorform";
         }
-        //todo create saveProfessorCommand interface's method and implement it.
-            ProfessorCommand saveprofessor=professorService.saveProfessorCommand(command);
-        //todo redrict to show the save professor
+        ProfessorCommand saveprofessor=professorService.saveProfessorCommand(command);
+
+
                 return "redirect:/professor/"+saveprofessor.getID()+"/show";
             }
+
+
             @GetMapping("/professor/{id}/show")
+
             public String showProfessor(@PathVariable String id,Model model){
-        //todo Create find by id
+
         model.addAttribute("professor" ,professorService.findCommandById(Long.parseLong(id)));
-            //todo create html file show taking the model attribute professor
-            return "prfessor/show";
+
+
+            return "professor/show";
             }
 }

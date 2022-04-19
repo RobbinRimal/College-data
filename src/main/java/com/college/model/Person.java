@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.Lob;
 import javax.persistence.MappedSuperclass;
+import java.sql.Date;
 import java.time.LocalDate;
 @Getter
 @Setter
@@ -21,8 +22,10 @@ public class Person extends BaseEntity{
     private String lastName;
     private String fatherName;
     private String email;
-    private LocalDate dob;
+    private Date dob;
     private String address;
+
+
 
     @Lob
     private Byte[] image;
