@@ -6,9 +6,9 @@
 </head>
 <body>
 <h1>Form</h1>
-<form action="#" th:action="@{/professor/form}" th:object="${Professor}" method="get">
+<form action="#" th:action="@{/professor/}" th:object="${professor}" method="post">
 
-   <div>
+<!--   <div>
        <p>First Name: <input type="text" th:field="*{name}" /></p>
    </div>
 
@@ -27,7 +27,7 @@
     <div>
         <p>Date Of Birth: <input type="datetime-local" th:field="*{dob}" /></p>
     </div>
-
+-->
     <div>
         <p>Faculty: <input type="text" th:field="*{Faculty}" /></p>
     </div>

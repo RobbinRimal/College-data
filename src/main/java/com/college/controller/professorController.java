@@ -1,35 +1,55 @@
 package com.college.controller;
 
-import com.college.model.Professor;
-import com.college.repository.ProfessorRepository;
+import com.college.command.ProfessorCommand;
+import com.college.service.ProfessorService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.logging.Logger;
+import javax.validation.Valid;
 
-@RequestMapping({"/professor","/",""})
+
 @Controller
 @Slf4j
-public class professorController {
-    ProfessorRepository professorRepository;
 
-    public professorController(ProfessorRepository professorRepository) {
-        this.professorRepository = professorRepository;
+public class professorController {
+   ProfessorService professorService;
+
+    public professorController(ProfessorService professorService) {
+        this.professorService = professorService;
     }
 
     @GetMapping("/form")
-    public String professorDataForm(){
-        Logger.getLogger("i working");
-    return "professorForm";
-}
-@PostMapping("/form")
-    public String save(Professor professor){
-    professorRepository.save(professor);
+            public String newprofessor(Model model){
+            model.addAttribute("professor",new ProfessorCommand());
+            return "professor/professorform";
 
-    return "redirect:/form";
-}
+            }
 
+            @PostMapping("professor")
+        public String Save(@Valid @ModelAttribute("professor") ProfessorCommand command, BindingResult bindingResult){
+        if (bindingResult
+                .hasErrors()){
+                    bindingResult
+                    .getAllErrors()
+                    .forEach(objectError -> {
+                        log.debug(objectError.toString());
+
+            });
+            return "professor/professorform";
+        }
+        //todo create saveProfessorCommand interface's method and implement it.
+            ProfessorCommand saveprofessor=professorService.saveProfessorCommand(command);
+        //todo redrict to show the save professor
+                return "redirect:/professor/"+saveprofessor.getID()+"/show";
+            }
+            @GetMapping("/professor/{id}/show")
+            public String showProfessor(@PathVariable String id,Model model){
+        //todo Create find by id
+        model.addAttribute("professor" ,professorService.findCommandById(Long.parseLong(id)));
+            //todo create html file show taking the model attribute professor
+            return "prfessor/show";
+            }
 }
