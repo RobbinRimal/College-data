@@ -9,7 +9,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 @Slf4j
@@ -23,6 +25,15 @@ public class ProfessorServiceImpl implements ProfessorService{
         this.professorRepository = professorRepository;
         this.professorCommandToProfessor = professorCommandToProfessor;
         this.professorToProfessorCommand = professorToProfessorCommand;
+    }
+
+    @Override
+    public Set<Professor> getProfessors() {
+        log.debug("trying get all professor data");
+        Set<Professor> professorSet=new HashSet<>();
+         professorRepository.findAll().iterator().forEachRemaining(professorSet::add);
+        System.out.println("sending all required data");
+         return professorSet;
     }
 
     @Override

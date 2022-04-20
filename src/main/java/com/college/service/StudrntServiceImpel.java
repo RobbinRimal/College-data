@@ -3,13 +3,16 @@ package com.college.service;
 import com.college.command.StudentCommand;
 import com.college.converter.StudentCommandToStudent;
 import com.college.converter.StudentToStudentCommand;
+import com.college.model.Person;
 import com.college.model.Student;
 import com.college.repository.StudentRepositories;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 @Slf4j
@@ -33,6 +36,15 @@ StudentCommandToStudent studentCommandToStudent;
         log.debug("Student saved sucessfully"+savedStudet.getID());
         return studentToStudentCommand.convert(savedStudet);
 
+    }
+
+    @Override
+    public Set<Student> getStudents() {
+        Set<Student> studentSet =new HashSet<>();
+
+                studentRepositories.findAll().iterator().forEachRemaining(studentSet::add);
+
+        return studentSet;
     }
 
     @Override

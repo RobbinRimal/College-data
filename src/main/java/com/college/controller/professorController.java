@@ -38,8 +38,7 @@ public class professorController {
                     .forEach(objectError -> {
                         log.debug(objectError.toString());
                                                              });
-            System.out.println("oops it has some error on  data");
-            return "professor/professorform";
+                        return "professor/professorform";
         }
         ProfessorCommand saveprofessor=professorService.saveProfessorCommand(command);
 
@@ -49,12 +48,16 @@ public class professorController {
 
 
             @GetMapping("/professor/{id}/show")
-
             public String showProfessor(@PathVariable String id,Model model){
-
-        model.addAttribute("professor" ,professorService.findCommandById(Long.parseLong(id)));
-
-
+            model.addAttribute("professor" ,professorService.findCommandById(Long.parseLong(id)));
             return "professor/show";
+
+            }
+
+            @GetMapping("/professor/showall")
+            public String showProfessors(Model model){
+            model.addAttribute("professors",professorService.getProfessors());
+            return "professor/showall";
+
             }
 }

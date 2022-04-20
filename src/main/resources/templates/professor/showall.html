@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:border="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>List of professor</h1>
+
+  <div>
+      <table>
+      <thead >
+            <tr>
+                  <td>ID</td>
+                  <td>Name</td>
+                  <td>Father Name</td>
+                  <td>Email</td>
+                  <td>Date Of Birth</td>
+                  <td>Address</td>
+                  <td>Image</td>
+                  <td>University</td>
+                  <td>Faculty</td>
+                  <td>Experience</td>
+            </tr>
+      </thead>
+
+        <tbody>
+                <tr th:each="professor:${professors}">
+                    <td th:text="${professor.ID}">5</td>
+                    <td th:text="${professor.name+' '+professor.lastName }">Professor Name</td>
+                    <td th:text=${professor.fatherName}>Father's Name</td>
+                    <td th:text=${professor.email}>E-mail </td>
+                    <td th:text=${professor.dob}>20-11-2022</td>
+                    <td th:text="${professor.address}">sanischera</td>
+                    <td>this is where image will appear</td>
+                    <td th:text="${professor.university}">shikim downtown university</td>
+                    <td th:text="${professor.faculty}">Science</td>
+                    <td th:text="${professor.experience}">5</td>
+
+
+                </tr>
+
+        </tbody>
+
+
+      </table>
+  </div>
+
+
+</body>
+</html>

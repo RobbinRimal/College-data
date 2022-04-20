@@ -3,20 +3,16 @@ package com.college.controller;
 import com.college.command.StudentCommand;
 import com.college.service.StudentService;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.boot.model.source.internal.hbm.ModelBinder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 
 @Controller
 @Slf4j
 public class StudentController {
     StudentService studentService;
-
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
@@ -28,7 +24,7 @@ public class StudentController {
         return "student/studentform";
     }
 
-    @PostMapping("sudent")
+    @PostMapping("student")
     public String save(@Valid @ModelAttribute("student") StudentCommand command ,
                        BindingResult bindingResult){
 
@@ -39,14 +35,21 @@ public class StudentController {
             return "student/studentform";
         }
         StudentCommand savedCommand=studentService.SaveStudentCommand(command);
-        return "redirect:/student/"+savedCommand.getID()+"show";
+        return "redirect:/student/"+savedCommand.getID()+"/show";
 
     }
 
     @GetMapping("/student/{id}/show")
     public String showStudent(@PathVariable String id, Model model){
+        System.out.println("we are good until here");
         model.addAttribute("student",studentService.findCommandById(Long.parseLong(id)));
         return "student/show";
+
+    }
+        @GetMapping("student/showall")
+        public  String showStudents(Model model){
+        model.addAttribute("students",studentService.getStudents());
+        return "student/showall";
 
     }
 }
