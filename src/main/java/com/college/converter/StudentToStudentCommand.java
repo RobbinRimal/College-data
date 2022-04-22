@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class StudentToStudentCommand implements Converter<Student, StudentCommand> {
+    CourseToCourseCommand courseToCourseCommand;
     @Override
     @Synchronized
     @Nullable
@@ -23,9 +24,13 @@ public class StudentToStudentCommand implements Converter<Student, StudentComman
         studentCommand.setDob(source.getDob());
         studentCommand.setAddress(source.getAddress());
         studentCommand.setImage(source.getImage());
-        studentCommand.setCourseSet(source.getCourseSet());
         studentCommand.setYear(source.getYear());
         studentCommand.setCourseLength(source.getCourseLength());
+        if (source.getCourseSet()!=null&& source.getCourseSet().size()>0){
+            source.getCourseSet()
+                    .forEach(course -> studentCommand.getCourseSet()
+                            .add(courseToCourseCommand.convert(course)));
+        }
         return  studentCommand;
     }
 }

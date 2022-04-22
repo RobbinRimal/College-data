@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show subject</title>
+</head>
+<body>
+<h1>Subjects</h1>
+<table>
+    <ul th:each="subject:${subject}">
+        <li th: text="${subject.subjectName}">subject list</li>
+    </ul>
+</table>
+
+
+
+</body>
+</html>

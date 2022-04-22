@@ -12,6 +12,12 @@ import java.util.Optional;
 
 @Component
 public class ProfessorToProfessorCommand implements Converter<Professor, ProfessorCommand> {
+    SubjectToSubjectCommand subjectToSubjectCommand;
+
+    public ProfessorToProfessorCommand(SubjectToSubjectCommand subjectToSubjectCommand) {
+        this.subjectToSubjectCommand = subjectToSubjectCommand;
+    }
+
     public ProfessorToProfessorCommand() {
     }
 
@@ -31,7 +37,6 @@ public class ProfessorToProfessorCommand implements Converter<Professor, Profess
         professorCommand.setUniversity(source.getUniversity());
         professorCommand.setFaculty(source.getFaculty());
         professorCommand.setExperience(source.getExperience());
-        professorCommand.setSubjects(source.getSubjects());
         professorCommand.setName(source.getName());
         professorCommand.setLastName(source.getLastName());
         professorCommand.setFatherName(source.getFatherName());
@@ -40,6 +45,10 @@ public class ProfessorToProfessorCommand implements Converter<Professor, Profess
         professorCommand.setAddress(source.getAddress());
         professorCommand.setImage(source.getImage());
 
+        if(source.getSubjects()!=null&& source.getSubjects().size()>0){
+            source.getSubjects().forEach(subject -> professorCommand.getSubjects()
+                    .add(subjectToSubjectCommand.convert(subject)));
+        }
 
         return professorCommand;
     }

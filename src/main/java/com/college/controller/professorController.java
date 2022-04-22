@@ -50,6 +50,7 @@ public class professorController {
             @GetMapping("/professor/{id}/show")
             public String showProfessor(@PathVariable String id,Model model){
             model.addAttribute("professor" ,professorService.findCommandById(Long.parseLong(id)));
+
             return "professor/show";
 
             }

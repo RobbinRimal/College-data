@@ -35,16 +35,14 @@ public class StudentController {
             return "student/studentform";
         }
         StudentCommand savedCommand=studentService.SaveStudentCommand(command);
-        return "redirect:/student/"+savedCommand.getID()+"/show";
+        return "redirect:/student/"+savedCommand.getID()+"/subject/new";
 
     }
 
     @GetMapping("/student/{id}/show")
     public String showStudent(@PathVariable String id, Model model){
-        System.out.println("we are good until here");
         model.addAttribute("student",studentService.findCommandById(Long.parseLong(id)));
         return "student/show";
-
     }
         @GetMapping("student/showall")
         public  String showStudents(Model model){

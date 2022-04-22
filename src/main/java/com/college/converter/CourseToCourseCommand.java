@@ -9,6 +9,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CourseToCourseCommand implements Converter<Course, CourseCommand> {
+    SubjectToSubjectCommand subjectToSubjectCommand;
+
+    public CourseToCourseCommand(SubjectToSubjectCommand subjectToSubjectCommand) {
+        this.subjectToSubjectCommand = subjectToSubjectCommand;
+    }
+
     @Synchronized
     @Nullable
     @Override
@@ -16,7 +22,15 @@ public class CourseToCourseCommand implements Converter<Course, CourseCommand> {
         if (source==null){return null;}
         final CourseCommand courseCommand=new CourseCommand();
         courseCommand.setCourse(source.getCourse());
-        courseCommand.setSubjectSet(source.getSubjectSet());
+
+        if(source.getSubjectSet()!=null
+                && source.getSubjectSet().size()>0){
+
+            source.getSubjectSet().forEach(subject -> courseCommand
+                    .getSubjectSet().add(subjectToSubjectCommand.convert(subject)));
+        }
+
+
         return  courseCommand;
 
     }

@@ -11,7 +11,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 public class StudentCommand  extends Personcommand{
-    private Set<Course> courseSet=new HashSet<>();
+    private Set<CourseCommand> courseSet=new HashSet<>();
     private int year;
     private  int courseLength;
 }

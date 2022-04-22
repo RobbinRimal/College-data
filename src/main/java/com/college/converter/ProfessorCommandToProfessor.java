@@ -12,6 +12,11 @@ import javax.persistence.Convert;
 @Component
 
 public class ProfessorCommandToProfessor implements Converter<ProfessorCommand,Professor> {
+    SubjectCommandToSubject subjectCommandToSubject;
+
+    public ProfessorCommandToProfessor(SubjectCommandToSubject subjectCommandToSubject) {
+        this.subjectCommandToSubject = subjectCommandToSubject;
+    }
 
     @Synchronized
     @Nullable
@@ -24,7 +29,6 @@ public class ProfessorCommandToProfessor implements Converter<ProfessorCommand,P
         professor.setUniversity(source.getUniversity());
         professor.setFaculty(source.getFaculty());
         professor.setExperience(source.getExperience());
-        professor.setSubjects(source.getSubjects());
         professor.setName(source.getName());
         professor.setLastName(source.getLastName());
         professor.setFatherName(source.getFatherName());
@@ -32,6 +36,11 @@ public class ProfessorCommandToProfessor implements Converter<ProfessorCommand,P
         professor.setDob(source.getDob());
         professor.setAddress(source.getAddress());
         professor.setImage(source.getImage());
+       //this thing took all day dont forget
+        if (source.getSubjects()!=null && source.getSubjects().size()>0){
+            source.getSubjects().forEach(subjectCommand -> professor.getSubjects()
+                    .add(subjectCommandToSubject.convert(subjectCommand)));
+        }
         return professor;
     }
 }

@@ -14,6 +14,6 @@ public class ProfessorCommand extends Personcommand {
     private String university;
     private String Faculty;
     private  Integer experience;
-    private Set<Subject> subjects = new HashSet<>();
+    private Set<SubjectCommand> subjects = new HashSet<>();
 
 }

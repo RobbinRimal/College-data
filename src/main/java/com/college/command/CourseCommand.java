@@ -13,7 +13,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class CourseCommand extends BaseEntityCommand{
     private String course;
-    private Set<Subject> subjectSet=new HashSet<>();
+    private Set<SubjectCommand> subjectSet=new HashSet<>();
 
     
 }

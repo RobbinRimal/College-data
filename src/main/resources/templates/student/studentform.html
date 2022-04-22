@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns :th="https://www.thymeleaf.org">
 <head>
     <title>Details</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -8,7 +8,7 @@
 <h1>Student Form</h1>
 <form action="#" th:action="@{/student/}" th:object="${student}" method="post">
 
-
+    <div>
     <p>First Name: <input type="text" th:field="*{name}" /></p>
     </div>
 

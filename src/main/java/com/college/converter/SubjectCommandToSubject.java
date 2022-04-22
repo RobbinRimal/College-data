@@ -16,7 +16,7 @@ public class SubjectCommandToSubject implements Converter<SubjectCommand,Subject
     public Subject convert(SubjectCommand source) {
         if (source==null){return null;}
         Subject subject= new Subject();
-        subject.setSubjectName("x");
+        subject.setSubjectName(source.getSubjectName());
         return subject;
     }
 }
